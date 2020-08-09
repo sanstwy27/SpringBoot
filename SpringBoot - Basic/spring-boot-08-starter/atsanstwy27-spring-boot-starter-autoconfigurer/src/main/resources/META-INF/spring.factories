@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.atkjs927.starter.HelloServiceAutoConfiguration

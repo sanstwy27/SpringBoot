@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+scan: reloaded onchange, default is true
+scanPeriod: scan interval, default is 1 minute
+debug: show logback info, default is false
+-->
+<configuration scan="false" scanPeriod="60 seconds" debug="false">
+    <property name="LOG_HOME" value="./app/log" />
+    <property name="appName" value="atkjs927-springboot"></property>
+
+    <!--
+        logback-spring.xml func.
+    -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <!--
+        Format:
+			%d: time
+			%thread: thread id
+			%-5level: msg level
+			%logger{50}: logger name
+			%msg: msg
+			%n: end-of-line
+        -->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <springProfile name="dev">
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ----> [%thread] ---> %-5level %logger{50} - %msg%n</pattern>
+            </springProfile>
+            <springProfile name="!dev">
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ==== [%thread] ==== %-5level %logger{50} - %msg%n</pattern>
+            </springProfile>
+        </layout>
+    </appender>
+
+    <!-- LogFile Partition -->
+    <appender name="appLogAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/${appName}.log</file>
+        <!--
+        Action: move, rename, etc.
+        TimeBasedRollingPolicy: most common strategy
+        -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--
+            FileName %d{yyyy-MM-dd}: by Date
+            %i: if(size > maxFileSize), then rolling #i
+            -->
+            <fileNamePattern>${LOG_HOME}/${appName}-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <!--
+            max logging file umber
+            -->
+            <MaxHistory>365</MaxHistory>
+            <!--
+            maxFileSize for timeBasedFileNamingAndTriggeringPolicy
+            no effect on SizeBasedTriggeringPolicy
+            -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <!-- Log Format -->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [ %thread ] - [ %-5level ] [ %logger{50} : %line ] - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <!--
+		name：logger prefix
+		level: TRACE < DEBUG < INFO < WARN < ERROR
+		additivity: use rootLogger appender?
+            false: children-logger appender-ref,
+            true: rootLogger & children-logger appender-ref
+    -->
+    <!-- hibernate logger -->
+    <logger name="com.atkjs927" level="debug" />
+    <!-- Spring framework logger -->
+    <logger name="org.springframework" level="debug" additivity="false"></logger>
+
+
+
+    <!--
+    root-logger and cur-logger is parent-children relationship,
+    and 1-1 mapping between classes and logger.
+    -->
+    <root level="info">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="appLogAppender" />
+    </root>
+</configuration>

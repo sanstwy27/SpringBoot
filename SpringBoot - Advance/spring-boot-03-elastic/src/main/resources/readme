@@ -1,0 +1,7 @@
+Elasticsearch Reference [6.1] » Mapping » Removal of mapping types
+-----------------------------------------------------------
+Removal of mapping types
+Indices created in Elasticsearch 6.0.0 or later may only contain a single mapping type.
+Indices created in 5.x with multiple mapping types will continue to function as before in Elasticsearch 6.x.
+Types will be deprecated in APIs in Elasticsearch 7.0.0, and completely removed in 8.0.0.
+-----------------------------------------------------------

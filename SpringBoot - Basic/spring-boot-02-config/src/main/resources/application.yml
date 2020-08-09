@@ -1,0 +1,36 @@
+server:
+  port: 8081
+  path: /hello
+spring:
+  profiles:
+    active: prod
+
+---
+
+server:
+  port: 8083
+spring:
+  profiles: dev
+
+---
+
+server:
+  port: 8084
+spring:
+  profiles: prod
+
+
+---
+#person:
+#  lastName: zs
+#  age: 18
+#  boss: false
+#  birth: 2020/2/7
+#  maps: {k1: v1, k2: v2}
+#  lists:
+#    - aa
+#    - bbbb
+#    - ccc
+#  dog:
+#    name: 小狗
+#    age: 2

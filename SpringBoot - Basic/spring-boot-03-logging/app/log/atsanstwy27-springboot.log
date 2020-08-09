@@ -1,0 +1,9 @@
+2020-02-07 15:00:33.413 [ main ] - [ INFO  ] [ c.a.springboot.SpringBoot03LoggingApplicationTests : 55 ] - Starting SpringBoot03LoggingApplicationTests on DESKTOP-M1RG36O with PID 28900 (started by XXXXXXXX in XXXXXXXX\IdeaProjects\spring-boot-03-logging)
+2020-02-07 15:00:33.416 [ main ] - [ DEBUG ] [ c.a.springboot.SpringBoot03LoggingApplicationTests : 56 ] - Running with Spring Boot v2.2.4.RELEASE, Spring v5.2.3.RELEASE
+2020-02-07 15:00:33.417 [ main ] - [ INFO  ] [ c.a.springboot.SpringBoot03LoggingApplicationTests : 651 ] - No active profile set, falling back to default profiles: default
+2020-02-07 15:00:34.961 [ main ] - [ INFO  ] [ c.a.springboot.SpringBoot03LoggingApplicationTests : 61 ] - Started SpringBoot03LoggingApplicationTests in 2.049 seconds (JVM running for 3.295)
+2020-02-07 15:00:35.404 [ main ] - [ TRACE ] [ c.a.springboot.SpringBoot03LoggingApplicationTests : 15 ] - this trace log..
+2020-02-07 15:00:35.404 [ main ] - [ DEBUG ] [ c.a.springboot.SpringBoot03LoggingApplicationTests : 16 ] - this debug log..
+2020-02-07 15:00:35.404 [ main ] - [ INFO  ] [ c.a.springboot.SpringBoot03LoggingApplicationTests : 18 ] - this info log..
+2020-02-07 15:00:35.404 [ main ] - [ WARN  ] [ c.a.springboot.SpringBoot03LoggingApplicationTests : 19 ] - this warn log..
+2020-02-07 15:00:35.405 [ main ] - [ ERROR ] [ c.a.springboot.SpringBoot03LoggingApplicationTests : 20 ] - this error log..
